@@ -1,12 +1,13 @@
 import pandas as pd
 import missingno as msno
 
-def getPts(value, level) :
-    valret = 0
+  def getPts(value, level) :
+    valret = -1
     for i, x in enumerate(level) :
-        valret = i
         if int(value) <= int(x) :
+            valret = i
             break
+    valret = 10 if valret == -1
     return valret
 
 def getNutriScore(df, code) :
@@ -51,5 +52,13 @@ def removeEmpty(df) :
         'sugars_100g' : 0, 
         'fiber_100g' : 0, 
         'proteins_100g' : 0})
+    
+    df = df.loc[df.fat_100g <= 100]
+    df = df.loc[df['fruits-vegetables-nuts_100g'] <= 100]
+    df = df.loc[df["saturated-fat_100g"] <= 100]
+    df = df.loc[df.sugars_100g <= 100]
+    df = df.loc[df.fiber_100g <= 100]
+    df = df.loc[df.proteins_100g <= 100]
+
     df = df.drop(df.countries.loc[~df.countries.str.contains("France")].index)
     return df

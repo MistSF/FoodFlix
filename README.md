@@ -1,14 +1,28 @@
 # Food Flix
 
-### Data to keep ###
+# 1 : Select Data
+    We pick only data pre selectionned
 
-- Code
-- Product Name
-- Nutri Score
-- Brand
+# 2 : Clean Data
+    Remove null from :
+        product_name
+        countries
+        energy_100g
+        salt_100g
+        sodium_100g
 
+    Fill with 0 :
+        fruits-vegetables-nuts_100g
+        fat_100g
+        satured-fat_100g
+        sugars_100g
+        fiber_100g
+        proteins_100g
 
-### END ###
-
-# 1 : Clean Data
-Remove all data who's not enough filled, except data about the composition.
+    Remove incoherent value :
+        fruits-vegetables-nuts_100g
+        fat_100g
+        satured-fat_100g
+        sugars_100g
+        fiber_100g
+        proteins_100g

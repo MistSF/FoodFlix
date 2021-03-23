@@ -13,7 +13,6 @@ def removeNonValuableData(path, newFile, toKeep, tsv=False) :
     df = cl.removeEmpty(df)
     listEmptyNutritionGradeFr = df.loc[df.nutrition_grade_fr.isnull()]
     for x in listEmptyNutritionGradeFr.code :
-
         df = cl.getNutriScore(df, x)
     df.to_csv(newFile)
     return df

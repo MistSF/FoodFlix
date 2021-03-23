@@ -2,6 +2,9 @@ import pandas as pd
 import missingno as msno
 
   def getPts(value, level) :
+    """
+        Return score by index
+    """
     valret = -1
     for i, x in enumerate(level) :
         if int(value) <= int(x) :
@@ -11,6 +14,9 @@ import missingno as msno
     return valret
 
 def getNutriScore(df, code) :
+    """
+        Calcule le nutri score
+    """
     currentRow = df.loc[df.code == code]
     ptsKJ = getPts(currentRow.energy_100g, [335, 670, 1005, 1340, 1675, 2010, 2345, 2680, 3015, 3350])
     ptsGlus = getPts(currentRow.sugars_100g, [4.5, 9, 13.5, 18, 22.5, 27, 31, 36, 40, 45])
@@ -39,6 +45,11 @@ def getNutriScore(df, code) :
     return df
 
 def removeEmpty(df) :
+    """
+        Remove empty or invalid data
+        Fill null by 0
+    """
+
     df = df.dropna(subset=[
         "product_name", 
         "countries", 

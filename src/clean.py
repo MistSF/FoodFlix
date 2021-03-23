@@ -10,7 +10,7 @@ import missingno as msno
         if int(value) <= int(x) :
             valret = i
             break
-    valret = 10 if valret == -1
+    valret = len(level) if valret == -1
     return valret
 
 def getNutriScore(df, code) :
